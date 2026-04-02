@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amjad Nasser | Data Analyst</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #f5ede0;
+      --dark: #1a1512;
+      --mid: #5d5049;
+      --accent: #8c2f24;
+      --card-a: #eddfc8;
+      --card-b: #e3ceaf;
+      --white: #fff8f0;
+      --div: rgba(28, 23, 20, 0.12);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.d1 { transition-delay: 0.08s; }
+    .reveal.d2 { transition-delay: 0.16s; }
+    .reveal.d3 { transition-delay: 0.24s; }
+    .reveal.d4 { transition-delay: 0.32s; }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 237, 224, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--div);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .nav-logo {
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: var(--mid);
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.25s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-nav:hover {
+      opacity: 0.88;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      border-top: 1px solid var(--div);
+    }
+
+    .mobile-menu a {
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      color: var(--mid);
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--div);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    #hero {
+      padding: 60px 0 52px;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(140, 47, 36, 0.08), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(140, 47, 36, 0.05), transparent 30%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .label {
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .label-sub {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 84px;
+      line-height: 0.93;
+      font-weight: 400;
+      letter-spacing: -2px;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    .hero-sub {
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--mid);
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    .ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--div);
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--dark);
+      padding: 14px 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); }
+
+    .btn-ghost {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(140, 47, 36, 0.35);
+      background: rgba(140, 47, 36, 0.08);
+      color: var(--accent);
+      padding: 14px 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(140, 47, 36, 0.14);
+    }
+
+    .portrait-box {
+      background: var(--card-a);
+      border-radius: 44px;
+      padding: 20px;
+      border: 1px solid var(--div);
+      box-shadow: 0 12px 48px rgba(28, 23, 20, 0.1);
+    }
+
+    .portrait-inner {
+      border-radius: 34px;
+      overflow: hidden;
+      background: #d8c1af;
+      height: 480px;
+    }
+
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #about,
+    #skills,
+    #projects,
+    #experience,
+    #interests {
+      padding: 40px 0 0;
+    }
+
+    #contact {
+      padding: 84px 0 100px;
+    }
+
+    .section-card,
+    .about-card {
+      background: var(--white);
+      border: 1px solid var(--div);
+      border-radius: 36px;
+      padding: 38px 42px;
+      box-shadow: 0 4px 24px rgba(28, 23, 20, 0.06);
+    }
+
+    .big-title {
+      font-size: 74px;
+      line-height: 0.94;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    .body-text {
+      font-family: Inter, sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--mid);
+    }
+
+    .about-text {
+      max-width: 1120px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--div);
+      margin: 26px 0 20px;
+    }
+
+    .formation-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .formation-date {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .card-sm {
+      border-radius: 20px;
+      padding: 20px 22px;
+      border: 1px solid var(--div);
+    }
+
+    .card-sm .degree {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0;
+    }
+
+    .card-sm .school {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: var(--mid);
+      margin-bottom: 12px;
+    }
+
+    .card-sm ul {
+      list-style: none;
+      display: grid;
+      gap: 5px;
+    }
+
+    .card-sm ul li {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.5;
+      display: flex;
+      gap: 7px;
+    }
+
+    .card-sm ul li::before {
+      content: "▸";
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .lang-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .badge {
+      font-family: Inter, sans-serif;
+      background: var(--card-a);
+      border: 1px solid var(--div);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .section-intro {
+      margin-bottom: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-block {
+      border-radius: 30px;
+      padding: 26px;
+      border: 1px solid var(--div);
+      box-shadow: 0 2px 12px rgba(28, 23, 20, 0.05);
+      min-height: 270px;
+    }
+
+    .skill-block:nth-child(odd) { background: var(--white); }
+    .skill-block:nth-child(even) { background: var(--card-a); }
+
+    .skill-block h3 {
+      font-size: 25px;
+      line-height: 1.1;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tlogo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      flex-shrink: 0;
+      border-radius: 4px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      border-radius: 30px;
+      padding: 26px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--div);
+      cursor: pointer;
+      transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.13);
+      border-color: rgba(140, 47, 36, 0.35);
+    }
+
+    .project-cat {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .project-title {
+      font-size: 28px;
+      line-height: 1.08;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--mid);
+    }
+
+    .metrics {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .metric-tag {
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      color: #4b413c;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .project-link {
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 100%;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 118px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(140, 47, 36, 0.15));
+      border-radius: 2px;
+    }
+
+    .t-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 36px;
+    }
+
+    .t-year {
+      width: 108px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 20px;
+      padding-top: 22px;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+
+    .t-dot-wrap {
+      width: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 20px;
+      justify-content: center;
+    }
+
+    .t-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      flex-shrink: 0;
+    }
+
+    .t-card {
+      flex: 1;
+      margin-left: 20px;
+      background: var(--white);
+      border: 1px solid var(--div);
+      border-radius: 22px;
+      padding: 22px 26px;
+      box-shadow: 0 4px 20px rgba(28, 23, 20, 0.07);
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .t-company {
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .experience-date {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .t-role {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .t-bullets {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+    }
+
+    .t-bullets li {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      display: flex;
+      gap: 8px;
+    }
+
+    .t-bullets li::before {
+      content: "▸";
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .t-impact {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .interest-card {
+      border-radius: 30px;
+      padding: 28px;
+      border: 1px solid var(--div);
+      box-shadow: 0 2px 12px rgba(28, 23, 20, 0.05);
+    }
+
+    .interest-card:nth-child(odd) { background: var(--white); }
+    .interest-card:nth-child(even) { background: var(--card-a); }
+
+    .interest-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .interest-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(140, 47, 36, 0.08);
+      border: 1px solid rgba(140, 47, 36, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .interest-icon img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+
+    .interest-icon.fallback {
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .interest-card h3 {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0;
+    }
+
+    .interest-card p {
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      background: linear-gradient(135deg, #58150d, #7c2417 50%, #8c2d1c);
+      border-radius: 42px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(88, 21, 13, 0.25);
+    }
+
+    .c-left {
+      padding: 54px 42px;
+      color: #fff6ef;
+    }
+
+    .c-left h2 {
+      font-size: 58px;
+      line-height: 0.95;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .c-left p {
+      font-family: Inter, sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255, 246, 239, 0.82);
+      max-width: 420px;
+      margin-bottom: 26px;
+    }
+
+    .c-infos {
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 246, 239, 0.88);
+      display: grid;
+      gap: 10px;
+    }
+
+    .c-infos a {
+      text-decoration: underline;
+    }
+
+    .btn-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+
+    .btn-dl:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .c-right {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 42px 36px;
+    }
+
+    .c-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .finput,
+    .ftextarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 16px 18px;
+      font-size: 15px;
+      font-family: Inter, sans-serif;
+      outline: none;
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    .finput::placeholder,
+    .ftextarea::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .ftextarea {
+      border-radius: 20px;
+      resize: vertical;
+    }
+
+    .finput:focus,
+    .ftextarea:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-send {
+      font-family: Inter, sans-serif;
+      border: none;
+      background: #fff7f1;
+      color: #611a10;
+      padding: 13px 24px;
+      border-radius: 999px;
+      width: 160px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-send:hover { opacity: 0.88; }
+
+    #form-ok {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff6ef;
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--div);
+      text-align: center;
+    }
+
+    footer p {
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      color: var(--mid);
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      overflow-y: auto;
+      background: var(--bg);
+    }
+
+    #modal.open {
+      display: block;
+      animation: slideUp 0.35s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .modal-body {
+      padding: 40px 0 80px;
+    }
+
+    .btn-back {
+      font-family: Inter, sans-serif;
+      border: 1px solid var(--div);
+      background: var(--white);
+      color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-back:hover {
+      background: var(--card-a);
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .modal-cat {
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .modal-title {
+      font-size: 64px;
+      line-height: 0.94;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    .modal-desc {
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 22px;
+    }
+
+    .detail-box {
+      border-radius: 32px;
+      padding: 24px;
+      min-height: 380px;
+      border: 1px solid var(--div);
+      box-shadow: 0 4px 24px rgba(28, 23, 20, 0.08);
+    }
+
+    .detail-label {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .detail-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .detail-list li {
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--mid);
+      display: flex;
+      gap: 10px;
+    }
+
+    .illus-section {
+      margin-top: 52px;
+    }
+
+    .illus-label {
+      font-family: Inter, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+
+    .illus-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .illus-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .illus-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .illus-img {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--div);
+      box-shadow: 0 4px 24px rgba(28, 23, 20, 0.09);
+      background: var(--card-a);
+      min-height: 240px;
+    }
+
+    .illus-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pdf-wrap {
+      margin-top: 32px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--div);
+      box-shadow: 0 4px 24px rgba(28, 23, 20, 0.09);
+      background: var(--card-a);
+    }
+
+    .pdf-wrap iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      display: block;
+    }
+
+    .pdf-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: underline;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .big-title { font-size: 64px; }
+      .hero-title { font-size: 72px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 56px; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-title { font-size: 44px; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .illus-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .btn-nav { display: none; }
+      .hamburger { display: block; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-title { font-size: 44px; }
+      .big-title { font-size: 46px; }
+      .label { font-size: 16px; }
+      .c-left h2 { font-size: 40px; }
+      .modal-title { font-size: 36px; }
+      .timeline::before { display: none; }
+      .t-item { flex-direction: column; gap: 8px; }
+      .t-year {
+        width: auto;
+        text-align: left;
+        padding-right: 0;
+        padding-top: 0;
+        display: none;
+      }
+      .t-dot-wrap { display: none; }
+      .t-card { margin-left: 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .illus-2, .illus-3 { grid-template-columns: 1fr; }
+      .section-card,
+      .about-card { padding: 28px 22px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 36px; }
+      .big-title { font-size: 38px; }
+      .about-card,
+      .section-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">AMJAD NASSER</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#interests">Intérêts</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="btn-nav" onclick="dlCV()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Mon CV
+          </button>
+        </li>
+      </ul>
+
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <svg id="ico-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="ico-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="display:none">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mob-menu">
+      <a href="#about" onclick="closeMenu()">À propos</a>
+      <a href="#skills" onclick="closeMenu()">Compétences</a>
+      <a href="#projects" onclick="closeMenu()">Projets</a>
+      <a href="#experience" onclick="closeMenu()">Expérience</a>
+      <a href="#interests" onclick="closeMenu()">Intérêts</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#" onclick="closeMenu(); dlCV(); return false;" style="color:var(--accent);font-weight:700">↓ Télécharger mon CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="label">Votre futur alternant-Data Analyst</p>
+          <h1 class="hero-title">Transformez vos données en décisions stratégiques.</h1>
+          <p class="hero-sub">
+            J’analyse, structure et exploite des données complexes pour produire des insights clairs dans des environnements exigeants.
+          </p>
+          <div class="ctas">
+            <a href="#projects" class="btn-primary">Voir mes projets</a>
+            <a href="#contact" class="btn-outline">Me contacter</a>
+            <button class="btn-ghost" onclick="dlCV()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Télécharger mon CV
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="portrait-box">
+            <div class="portrait-inner" id="portrait-wrap">
+              <img src="./img/PhotoProfil.jpg" alt="Amjad Nasser" id="portrait-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-card reveal">
+          <p class="label">Qui suis-je ?</p>
+          <h2 class="big-title">De la donnée à la décision.</h2>
+          <p class="body-text about-text">
+            Avec une double formation en sciences de la santé puis en science des données, j’aborde chaque problématique avec rigueur et sens analytique du contexte métier. J’analyse, structure et exploite des données sur l’ensemble du cycle data, de la préparation à la modélisation, en veillant à restituer les résultats aux équipes métiers avec une approche claire et un storytelling adapté. Mon objectif : produire des résultats clairs, fiables et directement exploitables.
+          </p>
+
+          <hr class="divider" />
+          <p class="label-sub">Ma formation</p>
+
+          <div class="form-grid-2">
+            <div class="card-sm" style="background:var(--card-a)">
+              <div class="formation-title-row">
+                <p class="degree">BUT Science des Données</p>
+                <span class="formation-date">2023 - 2025</span>
+              </div>
+              <p class="school">IUT Paris Rives de Seine | Université Paris Cité</p>
+              <ul>
+                <li>Analyse de données, statistiques, machine learning</li>
+                <li>Visualisation et interprétation de données</li>
+                <li>Projets concrets (environnement médical, enquêtes réelles)</li>
+              </ul>
+            </div>
+
+            <div class="card-sm" style="background:var(--card-b)">
+              <div class="formation-title-row">
+                <p class="degree">Parcours Santé</p>
+                <span class="formation-date" style="color:#7a4210">2022 - 2023</span>
+              </div>
+              <p class="school">Université Paris Cité</p>
+              <ul>
+                <li>Bases scientifiques en biologie et physiologie</li>
+                <li>Développement d’un raisonnement analytique</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lang-row">
+            <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:var(--mid)">Langues :</span>
+            <span class="badge">Français | natif</span>
+            <span class="badge">Anglais | courant | SAT 1420/1600</span>
+            <span class="badge">Espagnol | B2</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-card reveal">
+          <div class="section-intro">
+            <p class="label">Compétences et outils</p>
+            <h2 class="big-title">Des compétences data pour produire des décisions concrètes.</h2>
+            <p class="body-text" style="max-width:760px;margin-top:14px">
+              Un ensemble d’outils techniques au service de la décision dans le cadre de problématiques data concrètes.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="skill-block reveal">
+              <h3>Outils d’analyse</h3>
+              <ul class="skill-list">
+                <li><img class="tlogo" src="./img/sql-logo.jpg" alt="SQL" /> SQL</li>
+                <li><img class="tlogo" src="./img/power-bi-logo.jpg" alt="Power BI" /> Power BI</li>
+                <li>Power Query</li>
+                <li><img class="tlogo" src="./img/Excel-logo.jpg" alt="Excel" /> Excel avancé</li>
+                <li>Microsoft Azure</li>
+                <li>Git</li>
+              </ul>
+            </div>
+
+            <div class="skill-block reveal d1">
+              <h3>Langages</h3>
+              <ul class="skill-list">
+                <li><img class="tlogo" src="./img/Python-Logo.png" alt="Python" /> Python avec Pandas, Matplotlib, PySpark et Scikit-learn</li>
+                <li>R</li>
+                <li>SAS</li>
+              </ul>
+            </div>
+
+            <div class="skill-block reveal d2">
+              <h3>Reporting et dashboards</h3>
+              <ul class="skill-list">
+                <li>Création de tableaux de bord interactifs</li>
+                <li>Suivi de KPI et performance</li>
+                <li>Analyse de données métier</li>
+                <li>Reporting décisionnel</li>
+              </ul>
+            </div>
+
+            <div class="skill-block reveal">
+              <h3>Analyse statistique</h3>
+              <ul class="skill-list">
+                <li>Analyse descriptive et inférentielle</li>
+                <li>Tests statistiques (Student, Fisher)</li>
+                <li>Interprétation de résultats</li>
+                <li>Aide à la décision basée sur données</li>
+              </ul>
+            </div>
+
+            <div class="skill-block reveal d1">
+              <h3>Data et machine learning</h3>
+              <ul class="skill-list">
+                <li>Nettoyage et préparation de données</li>
+                <li>Feature engineering</li>
+                <li>Modélisation (régression, classification)</li>
+                <li>Évaluation de modèles</li>
+              </ul>
+            </div>
+
+            <div class="skill-block reveal d2">
+              <h3>MLOps</h3>
+              <ul class="skill-list">
+                <li>Déploiement de modèles (bases)</li>
+                <li>Suivi de performance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-card reveal">
+          <div class="section-intro">
+            <p class="label">Études de cas</p>
+            <h2 class="big-title">Projets data & analyses</h2>
+            <p class="body-text" style="max-width:760px;margin-top:14px">
+              Des projets concrets, conçus pour répondre à des problématiques réelles et produire des résultats exploitables.
+            </p>
+          </div>
+          <div class="project-grid" id="proj-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-card reveal">
+          <div class="section-intro">
+            <p class="label">Expériences professionnelles</p>
+            <h2 class="big-title">Des expériences concrètes en analyse de données.</h2>
+            <p class="body-text" style="max-width:800px;margin-top:14px">
+              Des expériences appliquées à des problématiques réelles, avec un impact concret sur l’analyse et la prise de décision.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="t-item reveal">
+              <div class="t-year">2025</div>
+              <div class="t-dot-wrap"><div class="t-dot"></div></div>
+              <div class="t-card">
+                <div class="experience-head">
+                  <div class="t-company">INSERM - CRSS</div>
+                  <div class="experience-date">05/07/2025 - 05/08/2025</div>
+                </div>
+                <div class="t-role">Stagiaire en biostatistiques</div>
+                <ul class="t-bullets">
+                  <li>Analyse de données épidémiologiques pour étudier l’impact des pesticides sur les cancers pédiatriques</li>
+                  <li>Contrôle qualité et structuration de bases de données de santé publique</li>
+                  <li>Production d’analyses statistiques pour identifier des tendances significatives</li>
+                </ul>
+                <div class="t-impact"><strong>Impact :</strong> Contribution à des analyses utilisées dans des études de santé publique</div>
+              </div>
+            </div>
+
+            <div class="t-item reveal d1">
+              <div class="t-year">2024</div>
+              <div class="t-dot-wrap"><div class="t-dot"></div></div>
+              <div class="t-card">
+                <div class="experience-head">
+                  <div class="t-company">FNAC 75006</div>
+                  <div class="experience-date">08/08/2024 - 28/09/2024</div>
+                </div>
+                <div class="t-role">Assistant Business Analyst</div>
+                <ul class="t-bullets">
+                  <li>Analyse des données clients pour identifier des comportements d’achat</li>
+                  <li>Suivi et interprétation de KPI commerciaux (ventes, panier moyen, fréquence)</li>
+                  <li>Création de reportings pour accompagner les équipes marketing</li>
+                </ul>
+                <div class="t-impact"><strong>Impact :</strong> Contribution à l’optimisation des performances commerciales</div>
+              </div>
+            </div>
+
+            <div class="t-item reveal d2">
+              <div class="t-year">2023</div>
+              <div class="t-dot-wrap"><div class="t-dot"></div></div>
+              <div class="t-card">
+                <div class="experience-head">
+                  <div class="t-company">La Boutique du Coiffeur 75001</div>
+                  <div class="experience-date">17/09/2023 - 14/05/2024</div>
+                </div>
+                <div class="t-role">Marketing Manager</div>
+                <ul class="t-bullets">
+                  <li>Analyse des performances produits et compréhension du comportement client</li>
+                  <li>Gestion du service après-vente et remontée d’insights terrain</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="container">
+        <div class="section-card reveal">
+          <div class="section-intro">
+            <p class="label">Centres d’intérêt</p>
+            <h2 class="big-title">Ce que ces pratiques m’ont appris.</h2>
+          </div>
+
+          <div class="grid-2">
+            <div class="interest-card reveal">
+              <div class="interest-head">
+                <div class="interest-icon">
+                  <img src="./img/BoxeLogo.png" alt="Logo boxe" onerror="this.parentElement.innerHTML='🥊';this.parentElement.classList.add('fallback');" />
+                </div>
+                <h3>Boxe</h3>
+              </div>
+              <p>Pratique régulière qui développe discipline, gestion de l’effort et capacité à rester concentré sous pression.</p>
+            </div>
+
+            <div class="interest-card reveal d1">
+              <div class="interest-head">
+                <div class="interest-icon">
+                  <img src="./img/PianoLogo.png" alt="Logo piano" onerror="this.parentElement.innerHTML='🎹';this.parentElement.classList.add('fallback');" />
+                </div>
+                <h3>Piano</h3>
+              </div>
+              <p>Pratique du piano, qui demande rigueur, précision et constance dans l’apprentissage.</p>
+            </div>
+
+            <div class="interest-card reveal d2">
+              <div class="interest-head">
+                <div class="interest-icon">
+                  <img src="./img/CinemaLogo.png" alt="Logo cinéma" onerror="this.parentElement.innerHTML='🎬';this.parentElement.classList.add('fallback');" />
+                </div>
+                <h3>Cinéma</h3>
+              </div>
+              <p>Intérêt pour le cinéma et les œuvres visuelles, avec une attention particulière aux récits et aux dynamiques humaines.</p>
+            </div>
+
+            <div class="interest-card reveal d3">
+              <div class="interest-head">
+                <div class="interest-icon">
+                  <img src="./img/LiteratureLogo.png" alt="Logo culture" onerror="this.parentElement.innerHTML='📚';this.parentElement.classList.add('fallback');" />
+                </div>
+                <h3>Découverte de nouvelles cultures</h3>
+              </div>
+              <p>Intérêt pour les cultures et les environnements différents, avec une curiosité pour les modes de vie et les perspectives variées.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-wrap reveal">
+          <div class="c-left">
+            <h2>Discutons de votre besoin.</h2>
+            <p>
+              Je suis actuellement à la recherche d’un stage ou d’une alternance en data analyse. Je suis également disponible pour échanger sur des projets data, d’analyse ou de visualisation.
+            </p>
+
+            <div class="c-infos">
+              <div><strong>E-mail :</strong> amjadnasser126@gmail.com</div>
+              <div><strong>Téléphone :</strong> +33 7 58 88 32 10</div>
+              <div><strong>Localisation :</strong> Paris 75015, France</div>
+              <div><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/amjadnasser" target="_blank" rel="noopener">linkedin.com/in/amjadnasser</a></div>
+              <div><strong>GitHub :</strong> <a href="https://github.com/amjadnasser126" target="_blank" rel="noopener">github.com/amjadnasser126</a></div>
+              <div>
+                <button class="btn-dl" onclick="dlCV()">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Télécharger mon CV
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-right">
+            <div id="form-ok">
+              <div style="font-size:48px;margin-bottom:16px">✓</div>
+              <strong>Merci pour votre message !</strong><br /><br />
+              Je reviens vers vous dans les plus brefs délais.
+            </div>
+
+            <form id="c-form" class="c-form" onsubmit="submitForm(event)">
+              <div class="form-row">
+                <input class="finput" placeholder="Prénom" required />
+                <input class="finput" placeholder="Nom" required />
+              </div>
+              <input class="finput" type="email" placeholder="E-mail" required />
+              <input class="finput" placeholder="Sujet" required />
+              <textarea class="ftextarea" placeholder="Votre message" rows="5" required></textarea>
+              <button type="submit" class="btn-send">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Amjad Nasser | Portfolio Data Analyst | Paris</p>
+    </div>
+  </footer>
+
+  <div id="modal" role="dialog" aria-modal="true">
+    <div class="modal-body container">
+      <button class="btn-back" onclick="closeModal()">← Retour aux projets</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    const PROJECTS = [
+      {
+        slug: "reporting-sas-excel",
+        cat: "Automatisation et pilotage",
+        title: "Automatisation du reporting pour améliorer le suivi de la performance",
+        accent: "#8f3a2e",
+        bg: "#e8d9c5",
+        desc: "Mise en place d’un système automatisé permettant de produire des indicateurs de performance de manière fiable et régulière.",
+        metrics: ["SAS", "Excel", "KPI"],
+        sections: [
+          { l: "Contexte", t: "Besoin d’industrialiser la production de reporting dans un environnement data structuré, avec des traitements récurrents à piloter efficacement." },
+          { l: "Problème", t: "Des traitements répétitifs et chronophages, sans automatisation ni standardisation des indicateurs de suivi." },
+          { l: "Approche", t: "Développement de macros SAS paramétrables à partir d’un fichier de pilotage. Structuration des sorties Excel pour faciliter la lecture et la prise de décision." },
+          { l: "Résultats", t: "Production automatisée d’indicateurs KPI, réduction significative du temps de traitement, restitution claire et structurée sous Excel." },
+          { l: "Impact", t: "Amélioration du pilotage de la performance et renforcement de la capacité de décision basée sur les données." }
+        ],
+        imgs: ["./img/PhotoProjetsas1.png", "./img/PhotoProjetsas2.png"],
+        imgLayout: "illus-2",
+        showIllustrationTitle: true,
+        pdf: null
+      },
+      {
+        slug: "analyse-cancer-sein",
+        cat: "Analyse statistique",
+        title: "Analyse de données médicales pour identifier des facteurs significatifs",
+        accent: "#7a3a10",
+        bg: "#eddfc8",
+        desc: "Analyse statistique d’un dataset médical afin de détecter des variables influençant le diagnostic et améliorer la compréhension des données.",
+        metrics: ["R", "Power BI", "Santé"],
+        sections: [
+          { l: "Contexte", t: "Analyse d’un dataset médical réel portant sur le cancer du sein, avec des variables cliniques et biologiques issues de cas bénins et malins." },
+          { l: "Problème", t: "Données brutes nécessitant un contrôle qualité approfondi et une structuration avant toute analyse comparative fiable." },
+          { l: "Approche", t: "Nettoyage des données, gestion des valeurs manquantes, tests statistiques comparatifs entre groupes de tumeurs bénignes et malignes. Création de visualisations Power BI." },
+          { l: "Résultats", t: "Identification de différences statistiquement significatives entre les deux groupes sur plusieurs variables cliniques clés." },
+          { l: "Impact", t: "Amélioration de la lisibilité des données et contribution à une meilleure compréhension des patterns médicaux différenciateurs." }
+        ],
+        imgs: [],
+        imgLayout: null,
+        showIllustrationTitle: false,
+        pdf: null
+      },
+      {
+        slug: "enquete-etudiante",
+        cat: "Data visualisation",
+        title: "Reporting et visualisation - Enquête étudiante",
+        accent: "#7a4210",
+        bg: "#e5d4b2",
+        desc: "Analyse de plus de 20 000 réponses pour produire des visualisations claires et exploitables.",
+        metrics: ["Power BI", "20k+ réponses", "Dashboard"],
+        sections: [
+          { l: "Contexte", t: "Enquête universitaire de grande envergure portant sur les pratiques étudiantes à l’Université Paris Cité, avec plus de 20 000 répondants." },
+          { l: "Problème", t: "Volume de données important et hétérogène, difficile à synthétiser et restituer sans outils et méthodes adaptés." },
+          { l: "Approche", t: "Analyses descriptives et comparatives pour identifier des tendances. Création de visualisations dynamiques et tableaux de bord Power BI, segmentation des résultats par profil." },
+          { l: "Résultats", t: "Tableaux de bord clairs et exploitables, tendances identifiées, restitution structurée adaptée à un public non spécialiste." },
+          { l: "Impact", t: "Aide à la décision pour les équipes universitaires grâce à des insights actionnables issus de données massives." }
+        ],
+        imgs: [
+          "./img/Projetsondage1.png",
+          "./img/PhotoProjetsondage2.png",
+          "./img/PhotoProjetsondage3.png",
+          "./img/Freins.png",
+          "./img/Capture_decran_2026-04-01_13474.png"
+        ],
+        imgLayout: "illus-2",
+        showIllustrationTitle: true,
+        pdf: null
+      },
+      {
+        slug: "conformite-rgpd",
+        cat: "Data governance et RGPD",
+        title: "Analyse de conformité RGPD et structuration des données",
+        accent: "#5c3a6b",
+        bg: "#e8dff0",
+        desc: "Identification des risques liés aux données et proposition de recommandations pour améliorer la gouvernance et la conformité.",
+        metrics: ["RGPD", "Data Quality", "AIPD"],
+        sections: [
+          { l: "Contexte", t: "Analyse de bases de données clients, achats et campagnes dans une optique de mise en conformité réglementaire RGPD." },
+          { l: "Problème", t: "Absence de classification formelle des données, traitements non documentés et risques de non-conformité identifiés sur plusieurs flux." },
+          { l: "Approche", t: "Identification et classification des données, définition des bases légales et des durées de conservation, réalisation d’une AIPD et analyse des risques." },
+          { l: "Résultats", t: "Cartographie complète des données et des traitements, évaluation qualitative de la fiabilité des données et identification des zones de non-conformité." },
+          { l: "Impact", t: "Recommandations concrètes en data governance avec sécurisation, gestion des accès, pseudonymisation et conformité réglementaire." }
+        ],
+        imgs: [],
+        imgLayout: null,
+        showIllustrationTitle: false,
+        pdf: null
+      },
+      {
+        slug: "powerbi-carte",
+        cat: "Power BI et data visualisation",
+        title: "Visualisation cartographique et tableaux de bord",
+        accent: "#1a5276",
+        bg: "#d6eaf8",
+        desc: "Conception de tableaux de bord interactifs intégrant des visualisations cartographiques pour restituer des données géospatiales de manière claire et exploitable.",
+        metrics: ["Power BI", "Carte", "Dashboard"],
+        sections: [
+          { l: "Contexte", t: "Besoin de restituer des données à dimension géographique de manière visuelle et interactive pour faciliter la prise de décision." },
+          { l: "Problème", t: "Données géospatiales brutes difficiles à interpréter sans visualisation adaptée et structurée." },
+          { l: "Approche", t: "Conception de rapports Power BI avec intégration de visuels cartographiques, filtres dynamiques et indicateurs clés pour explorer les données par zone géographique." },
+          { l: "Résultats", t: "Tableaux de bord interactifs permettant une lecture immédiate des données par territoire, avec navigation intuitive et filtres multi-niveaux." },
+          { l: "Impact", t: "Amélioration de la lisibilité des données géospatiales et aide à la décision basée sur la localisation." }
+        ],
+        imgs: [],
+        imgLayout: null,
+        showIllustrationTitle: false,
+        pdf: "./img/datavizchallenge.pdf",
+        pdfLabel: "Data Viz Challenge"
+      },
+      {
+        slug: "stage",
+        cat: "Stage",
+        title: "Projet en cours : missions et résultats à venir",
+        accent: "#7a6a5a",
+        bg: "#ece9e4",
+        desc: "Projet en cours : missions et résultats à venir.",
+        metrics: ["À venir"],
+        sections: [{ l: "Contexte", t: "Contenu à venir." }],
+        imgs: [],
+        imgLayout: null,
+        showIllustrationTitle: false,
+        pdf: null
+      }
+    ];
+
+    const LOGOS = {
+      "SQL": { src: "./img/sql-logo.jpg" },
+      "Power BI": { src: "./img/power-bi-logo.jpg" },
+      "Excel": { src: "./img/Excel-logo.jpg" },
+      "Python": { src: "./img/Python-Logo.png" }
+    };
+
+    function logoH(name, size = 22) {
+      const l = LOGOS[name];
+      if (!l) return "";
+      return `<img src="${l.src}" alt="${name}" style="width:${size}px;height:${size}px;object-fit:contain;flex-shrink:0;border-radius:4px" onerror="this.style.display='none'">`;
+    }
+
+    function renderCards() {
+      const grid = document.getElementById("proj-grid");
+      let html = "";
+
+      PROJECTS.forEach((p, i) => {
+        const d = i % 3 === 1 ? " d1" : i % 3 === 2 ? " d2" : "";
+        const metrics = p.metrics
+          .map((metric) => `<span class="metric-tag">${logoH(metric, 22)}${metric}</span>`)
+          .join("");
+
+        html += `
+          <article class="project-card reveal${d}" style="background:${p.bg}" onclick="openModal('${p.slug}')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openModal('${p.slug}')">
+            <div>
+              <p class="project-cat" style="color:${p.accent}">${p.cat}</p>
+              <h3 class="project-title" style="color:#2a211d">${p.title}</h3>
+              <p class="project-desc">${p.desc}</p>
+            </div>
+            <div>
+              <div class="metrics">${metrics}</div>
+              <button class="project-link" style="color:${p.accent}">Voir les détails →</button>
+            </div>
+          </article>
+        `;
+      });
+
+      grid.innerHTML = html;
+      grid.querySelectorAll(".reveal").forEach((card) => obs.observe(card));
+    }
+
+    function imgError(img) {
+      const wrapper = img.closest(".illus-img");
+      if (!wrapper) return;
+      wrapper.style.display = "none";
+    }
+
+    function openModal(slug) {
+      const p = PROJECTS.find((project) => project.slug === slug);
+      if (!p) return;
+
+      const metricsH = p.metrics
+        .map(
+          (metric) =>
+            `<span style="padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(28,23,20,.12);font-family:Inter,sans-serif;font-size:13px;color:#1a1512;display:inline-flex;align-items:center;gap:7px">${logoH(metric, 24)}${metric}</span>`
+        )
+        .join("");
+
+      const sectionsH = p.sections
+        .map(
+          (section) =>
+            `<li><span style="color:${p.accent};flex-shrink:0">▸</span><span><strong>${section.l} :</strong> ${section.t}</span></li>`
+        )
+        .join("");
+
+      let illusH = "";
+
+      if (p.imgs && p.imgs.length) {
+        const imgsH = p.imgs
+          .map(
+            (src) => `
+              <div class="illus-img">
+                <img src="${src}" alt="Illustration du projet" onerror="imgError(this)" />
+              </div>
+            `
+          )
+          .join("");
+
+        illusH += `<div class="illus-section">`;
+
+        if (p.showIllustrationTitle) {
+          illusH += `<p class="illus-label">Illustrations du projet</p>`;
+        }
+
+        illusH += `<div class="${p.imgLayout || "illus-1"}">${imgsH}</div>`;
+
+        if (p.pdf) {
+          illusH += `
+            <p class="illus-label" style="margin-top:32px">${p.pdfLabel || "Document"}</p>
+            <div class="pdf-wrap">
+              <iframe src="${p.pdf}" title="${p.pdfLabel || "PDF"}"></iframe>
+            </div>
+            <a href="${p.pdf}" download class="pdf-dl">↓ Télécharger le PDF</a>
+          `;
+        }
+
+        illusH += `</div>`;
+      } else if (p.pdf) {
+        illusH += `
+          <div class="illus-section">
+            <p class="illus-label">${p.pdfLabel || "Document"}</p>
+            <div class="pdf-wrap">
+              <iframe src="${p.pdf}" title="${p.pdfLabel || "PDF"}"></iframe>
+            </div>
+            <a href="${p.pdf}" download class="pdf-dl">↓ Télécharger le PDF</a>
+          </div>
+        `;
+      }
+
+      document.getElementById("modal-content").innerHTML = `
+        <div class="modal-grid">
+          <div>
+            <p class="modal-cat" style="color:${p.accent}">${p.cat}</p>
+            <h1 class="modal-title">${p.title}</h1>
+            <p class="modal-desc">${p.desc}</p>
+            <div class="metrics" style="margin-bottom:0">${metricsH}</div>
+          </div>
+
+          <div class="detail-box" style="background:${p.bg}">
+            <p class="detail-label" style="color:${p.accent}">Détails du projet</p>
+            <ul class="detail-list">${sectionsH}</ul>
+          </div>
+        </div>
+
+        ${illusH}
+      `;
+
+      const modal = document.getElementById("modal");
+      modal.classList.add("open");
+      modal.scrollTop = 0;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    window.addEventListener("scroll", function () {
+      document.getElementById("nav").style.boxShadow =
+        window.scrollY > 20 ? "0 2px 20px rgba(28,23,20,.08)" : "";
+    });
+
+    function toggleMenu() {
+      const open = document.getElementById("mob-menu").classList.toggle("open");
+      document.getElementById("ico-menu").style.display = open ? "none" : "block";
+      document.getElementById("ico-close").style.display = open ? "block" : "none";
+    }
+
+    function closeMenu() {
+      document.getElementById("mob-menu").classList.remove("open");
+      document.getElementById("ico-menu").style.display = "block";
+      document.getElementById("ico-close").style.display = "none";
+    }
+
+    function dlCV() {
+      const a = document.createElement("a");
+      a.href = "./img/CV_Amjad_Nasser_data.pdf";
+      a.download = "CV_Amjad_Nasser.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById("c-form").style.display = "none";
+      document.getElementById("form-ok").style.display = "block";
+
+      setTimeout(function () {
+        document.getElementById("form-ok").style.display = "none";
+        document.getElementById("c-form").style.display = "grid";
+        document.getElementById("c-form").reset();
+      }, 6000);
+    }
+
+    const portraitImg = document.getElementById("portrait-img");
+    if (portraitImg) {
+      portraitImg.onerror = function () {
+        const wrap = document.getElementById("portrait-wrap");
+        wrap.style.display = "flex";
+        wrap.style.alignItems = "center";
+        wrap.style.justifyContent = "center";
+        wrap.innerHTML = `
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#b09070" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+          </svg>
+        `;
+      };
+    }
+
+    const obs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      obs.observe(el);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        const id = a.getAttribute("href").slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    renderCards();
+  </script>
+</body>
+</html>
